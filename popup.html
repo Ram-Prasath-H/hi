@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tab Auto Reloader</title>
+  <style>
+    /* Body styling with background image and opacity effect */
+    html, body {
+      height: 100%; /* Ensures the body takes the full height */
+      margin: 0;    /* Removes default margin */
+      padding: 0;    /* Removes default padding */
+      font-family: Arial, sans-serif;
+      width: 250px;
+      color: #fff;
+      position: relative;
+      background-image: url('dddspidy.png'); /* Replace with your desired background image */
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Overlay to reduce background opacity */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0; /* Ensure it covers the entire body */
+      background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity by changing 0.5 */
+      z-index: 1; /* Make sure the overlay is behind content */
+    }
+
+    h3 {
+      margin: 0 0 15px;
+      text-align: center;
+      color: #ffffff;
+      z-index: 2;
+      position: relative;
+    }
+
+    /* Flex container for input and toggle button */
+    .flex-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      z-index: 2; /* Make sure the container is above the overlay */
+      position: relative;
+    }
+
+    /* Curved input field styling */
+    #interval {
+      width: 60px;
+      padding: 5px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 15px;
+      text-align: center;
+      outline: none;
+    }
+
+    /* Toggle switch styling */
+    .toggle-switch {
+      position: relative;
+      width: 50px;
+      height: 25px;
+      background-color: #ccc;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .toggle-switch:before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 21px;
+      height: 21px;
+      background-color: #fff;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-switch.active {
+      background-color: #4caf50;
+    }
+
+    .toggle-switch.active:before {
+      transform: translateX(25px);
+    }
+
+    .status {
+      text-align: center;
+      font-size: 14px;
+      z-index: 2; /* Ensure the status is above the overlay */
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <h3>Tab Auto Reloader</h3>
+  <div class="flex-container">
+    <input type="number" id="interval" min="5" value="30">
+    <div id="toggleSwitch" class="toggle-switch"></div>
+  </div>
+  <div class="status" id="status">Reload is Off</div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
